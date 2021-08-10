@@ -12,12 +12,7 @@ defmodule MyApp do
   end
 
   def handle_call(:inc, _from, acc) do
-    :ok =
-      @storage.write!(
-        "cache.txt",
-        to_string(acc + 1)
-      )
-
+    :ok = @storage.write!("cache.txt", to_string(acc + 1))
     {:reply, acc + 1, acc + 1}
   end
 end
