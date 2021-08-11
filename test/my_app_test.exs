@@ -8,10 +8,7 @@ defmodule MyAppTest do
 
   test "Increments the counter" do
     FileMock
-    |> expect(
-      :write!,
-      fn _path, "1" -> :ok end
-    )
+    |> expect(:write!, fn _path, "1" -> :ok end)
 
     {:ok, pid} = MyApp.start_link(0)
     assert 1 == GenServer.call(pid, :inc)
